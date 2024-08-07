@@ -23,7 +23,14 @@ export class AppService {
         }
       case 1:
       default:
-        const response = await axios.get('https://picsum.photos/400/500');
+        const randomWidth = Math.floor(Math.random() * 2801) + 200;
+        const randomHeight = Math.floor(Math.random() * 1801) + 200;
+        const response = await axios.get(
+          'https://picsum.photos/' +
+            randomWidth.toString() +
+            '/' +
+            randomHeight.toString(),
+        );
         return response.request.res.responseUrl;
     }
   }
