@@ -9,6 +9,7 @@ export class AppService {
   async getRandomImage(): Promise<string> {
     const rand = Math.floor(Math.random() * 2);
     switch (rand) {
+      // @ts-ignore
       case 0:
         try {
           const response = await axios({
@@ -20,7 +21,9 @@ export class AppService {
           });
           const data = await response.data;
           const elem = new JSDOM(data);
-          return elem.window.document.getElementsByTagName('img')[0].src;
+          const src = elem.window.document.getElementsByTagName('img')[0].src;
+          await axios.get(src);
+          return src;
         } catch (error) {}
       case 1:
       default:

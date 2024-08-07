@@ -15,8 +15,8 @@ async function bootstrap(): Promise<void> {
   app.enableCors({
     origin: [
       configService.get<string>('randomImagePrefixURL') as string,
-      /https*:\/\/localhost:3000/,
-      /^https*:\/\/192\.168\..*:3000$/,
+      /https*:\/\/localhost.*$/,
+      /^https*:\/\/192\.168\..*$/,
     ],
   });
 
