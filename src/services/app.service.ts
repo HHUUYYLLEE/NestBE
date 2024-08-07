@@ -11,27 +11,32 @@ export class AppService {
     switch (rand) {
       case 0:
         try {
-          const response = await axios.get(
-            this.configService.get<string>('randomImagePrefixURL') +
+          const response = await axios({
+            method: 'get',
+            url:
+              this.configService.get<string>('randomImagePrefixURL') +
               randomImageString(),
-          );
+            timeout: 12000,
+          });
           const data = await response.data;
           const elem = new JSDOM(data);
           return elem.window.document.getElementsByTagName('img')[0].src;
-        } catch (error) {
-          return 'error';
-        }
+        } catch (error) {}
       case 1:
       default:
         const randomWidth = Math.floor(Math.random() * 2801) + 200;
         const randomHeight = Math.floor(Math.random() * 1801) + 200;
-        const response = await axios.get(
-          'https://picsum.photos/' +
-            randomWidth.toString() +
-            '/' +
-            randomHeight.toString(),
-        );
-        return response.request.res.responseUrl;
+        try {
+          const response = await axios.get(
+            'https://picsum.photos/' +
+              randomWidth.toString() +
+              '/' +
+              randomHeight.toString(),
+          );
+          return response.request.res.responseUrl;
+        } catch (error) {
+          return 'error';
+        }
     }
   }
 }
