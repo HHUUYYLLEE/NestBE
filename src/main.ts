@@ -12,6 +12,14 @@ async function bootstrap(): Promise<void> {
     new FastifyAdapter(),
   );
   const configService = app.get(ConfigService);
+  app.enableCors({
+    origin: [
+      configService.get<string>('randomImagePrefixURL') as string,
+      /https*:\/\/localhost:3000/,
+      /^https*:\/\/192\.168\..*:3000$/,
+    ],
+  });
+
   const port = configService.get('port');
   await app.listen(port, '0.0.0.0');
 }
