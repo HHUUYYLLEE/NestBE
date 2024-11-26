@@ -24,7 +24,7 @@ export class AppService {
           const src = elem.window.document.getElementsByTagName('img')[0].src;
           await axios.get(src);
           return src;
-        } catch (error) {}
+        } catch (error) {return 'error';}
       case 1:
       default:
         const randomWidth = Math.floor(Math.random() * 2801) + 200;
