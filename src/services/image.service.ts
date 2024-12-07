@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { JSDOM } from 'jsdom';
 import { randomImageString } from 'src/utils/misc';
 import { ConfigService } from '@nestjs/config';
-import { AbstractImageService } from './abstract/abstract-image.service';
+import { AbstractImageService } from 'src/services/abstract/abstract-image.service';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable()

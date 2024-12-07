@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { MemoryStorageFile } from '@blazity/nest-file-fastify';
 import { shazamAPI } from 'src/utils/types';
 import { firstValueFrom } from 'rxjs';
-import { AbstractShazamService1, AbstractShazamService2, AbstractShazamService3 } from './abstract/abstract-shazam.service';
+import { AbstractShazamService1, AbstractShazamService2, AbstractShazamService3 } from 'src/services/abstract/abstract-shazam.service';
 import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class ShazamService {

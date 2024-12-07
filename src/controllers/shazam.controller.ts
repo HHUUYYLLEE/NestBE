@@ -1,7 +1,6 @@
 import { Controller, Post, Body, UseInterceptors, HttpStatus, Res } from '@nestjs/common';
-import { ShazamService } from '../services/shazam.service';
+import { ShazamService } from 'src/services/shazam.service';
 import { FileInterceptor, UploadedFile, MemoryStorageFile } from '@blazity/nest-file-fastify';
-import { shazamAPI } from 'src/utils/types';
 import { Response } from 'express';
 
 @Controller('shazam')
