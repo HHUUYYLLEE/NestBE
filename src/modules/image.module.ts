@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AbstractImageService } from '../services/abstract/abstract-image.service';
+import { AbstractImageService } from 'src/services/abstract/abstract-image.service';
 import { HttpModule } from '@nestjs/axios';
 import { HttpService } from '@nestjs/axios';
 @Module({

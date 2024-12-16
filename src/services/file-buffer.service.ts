@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
-import { AbstractFileBufferService } from '../services/abstract/abstract-file-buffer.service';
+import { AbstractFileBufferService } from 'src/services/abstract/abstract-file-buffer.service';
 
 @Injectable()
 export class FileBufferService {
