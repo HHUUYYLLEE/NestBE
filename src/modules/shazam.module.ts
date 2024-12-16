@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AbstractShazamService1, AbstractShazamService2, AbstractShazamService3 } from 'src/services/abstract/abstract-shazam.service';
+import { AbstractShazamService1, AbstractShazamService2, AbstractShazamService3 } from '../services/abstract/abstract-shazam.service';
 import { HttpModule } from '@nestjs/axios';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';

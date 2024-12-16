@@ -1,5 +1,5 @@
 import { Controller, Post, Res, Body, HttpStatus } from '@nestjs/common';
-import { FileBufferService } from 'src/services/file-buffer.service';
+import { FileBufferService } from '../services/file-buffer.service';
 import { Response } from 'express';
 @Controller('audio')
 export class FileBufferController {
