@@ -10,6 +10,8 @@ import { ShazamModule1, ShazamModule2, ShazamModule3 } from 'src/modules/shazam.
 import { FileBufferModule } from 'src/modules/file-buffer.module';
 import { FileBufferService } from 'src/services/file-buffer.service';
 import { FileBufferController } from 'src/controllers/file-buffer.controller';
+import { EventsGateway } from 'src/gateways/events.gateway';
+
 @Module({
   imports: [
     ConfigModule.forRoot({ load: [envConfig], isGlobal: true }),
@@ -20,6 +22,6 @@ import { FileBufferController } from 'src/controllers/file-buffer.controller';
     FileBufferModule
   ],
   controllers: [ImageController, ShazamController, FileBufferController],
-  providers: [ImageService, ShazamService, FileBufferService]
+  providers: [ImageService, ShazamService, FileBufferService, EventsGateway]
 })
 export class AppModule {}
