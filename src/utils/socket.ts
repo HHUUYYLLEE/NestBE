@@ -1,9 +1,8 @@
 import { WsSocketMessage } from 'src/utils/types';
-import { Socket } from 'socket.io';
-export const sendClientMessage = (client: Socket, event: string, data: string | object | number) => {
-  const sendData: WsSocketMessage = {
-    event,
-    data
-  };
-  client.send(JSON.stringify(sendData));
+import { Socket, Server } from 'socket.io';
+export const broadcast = (server: Server, data: string | number | object) => {
+  server.emit('broadcast', data);
+};
+export const broadcastExceptSender = (sender: Socket, data: string | number | object) => {
+  sender.broadcast.emit('broadcast', data);
 };
