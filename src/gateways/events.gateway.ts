@@ -1,20 +1,11 @@
-import { ConfigService } from '@nestjs/config';
-import {
-  OnGatewayConnection,
-  OnGatewayDisconnect,
-  SubscribeMessage,
-  WebSocketGateway,
-  WebSocketServer,
-  WsResponse
-} from '@nestjs/websockets';
+import { OnGatewayConnection, OnGatewayDisconnect, SubscribeMessage, WebSocketServer } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
-import { broadcast, broadcastExceptSender } from 'src/utils/socket';
-
+import { broadcast, broadcastExceptSender, messageExceptSender } from 'src/utils/socket';
+import { GlobalService } from 'src/services/global.service';
 export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
   private readonly server: Server;
   wsClients: Socket[] = [];
-
   handleConnection(client: Socket) {
     // console.log('connected');
     broadcastExceptSender(client, 1);
@@ -28,7 +19,8 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   @SubscribeMessage('message')
   handleMessage(client: Socket, data: number | string) {
-    console.log(data);
-    broadcastExceptSender(client, { id: client.id, data });
+    if (GlobalService.messageList.length >= 40) GlobalService.messageList.shift();
+    GlobalService.messageList.push({ id: client.id, data, date: new Date() });
+    messageExceptSender(client, { id: client.id, data });
   }
 }

@@ -24,7 +24,6 @@ async function bootstrap(): Promise<void> {
   });
 
   const port = configService.get('port');
-  // app.useWebSocketAdapter(new WsAdapter(app));
   app.useWebSocketAdapter(new IoAdapter(app));
   decorateGateway(EventsGateway, configService);
   await app.listen(port, '0.0.0.0');

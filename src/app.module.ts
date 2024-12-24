@@ -11,6 +11,9 @@ import { FileBufferModule } from 'src/modules/file-buffer.module';
 import { FileBufferService } from 'src/services/file-buffer.service';
 import { FileBufferController } from 'src/controllers/file-buffer.controller';
 import { EventsGateway } from 'src/gateways/events.gateway';
+import { MessageModule } from './modules/message.module';
+import { MessageController } from './controllers/message.controller';
+import { MessageService } from './services/message.service';
 
 @Module({
   imports: [
@@ -19,9 +22,10 @@ import { EventsGateway } from 'src/gateways/events.gateway';
     ShazamModule1,
     ShazamModule2,
     ShazamModule3,
-    FileBufferModule
+    FileBufferModule,
+    MessageModule
   ],
-  controllers: [ImageController, ShazamController, FileBufferController],
-  providers: [ImageService, ShazamService, FileBufferService, EventsGateway]
+  controllers: [ImageController, ShazamController, FileBufferController, MessageController],
+  providers: [ImageService, ShazamService, FileBufferService, EventsGateway, MessageService]
 })
 export class AppModule {}
