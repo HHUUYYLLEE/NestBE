@@ -8,6 +8,8 @@ const envConfig = () => ({
   shazamAPIRoute1: process.env.SHAZAM_API_ROUTE1,
   shazamAPIRoute2: process.env.SHAZAM_API_ROUTE2,
   shazamAPIRoute3: process.env.SHAZAM_API_ROUTE3,
-  shazamAPIKey: process.env.SHAZAM_API_KEY
+  shazamAPIKey: process.env.SHAZAM_API_KEY,
+  clientSecret: process.env.CLIENT_SECRET,
+  clientID: process.env.CLIENT_ID
 });
 export default envConfig;
